@@ -16,12 +16,6 @@ class FavoriteService {
   async removeFavorite(favoriteProduct: ProductData) {
     const favoriteProducts = await this.get();
     await this.set(favoriteProducts.filter(({ id }) => id !== favoriteProduct.id));
-    this._updCounters();
-  }
-
-  async clear() {
-    await localforage.removeItem(DB);
-    this._updCounters();
   }
 
   async get(): Promise<ProductData[]> {

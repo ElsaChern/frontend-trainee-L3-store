@@ -67,9 +67,8 @@ class ProductDetail extends Component {
   }
 
   private async _toggleFavorite() {
-    if (!this.product) {
-      return;
-    }
+    if (!this.product) return;
+
     let isFavorite = await favoriteService.isFavorite(this.product);
 
     if (isFavorite) {
