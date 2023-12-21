@@ -2,7 +2,7 @@ import { ProductData } from 'types';
 
 class EventService {
   // Отправка событий
-  private _sendEvent(type: string, payload: {}) {
+  private _sendEvent(type: string, payload: Object) {
     const timestamp = Date.now();
     try {
       fetch('/api/sendEvent', {
@@ -35,8 +35,8 @@ class EventService {
   }
 
   // 3.	Добавление товара в корзину
-  public sendAddToCardEvent(product: ProductData) {
-    this._sendEvent('addToCard', product);
+  public sendAddToCartEvent(product: ProductData) {
+    this._sendEvent('addToCart', product);
   }
 
   // 4.	Оформление заказа
