@@ -11,18 +11,22 @@ export class Tips {
     this.view = new ViewTemplate(html).cloneView();
   }
 
-  public attach($root: HTMLElement) {
+  attach($root: HTMLElement) {
     $root.prepend(this.view.root);
   }
 
-  public render() {
+  render() {
     const linkedTips = tips.map((tip) => {
       return `<a>${tip}</a>`;
     });
 
-    const firstTips = linkedTips.slice(0, -1).join(', ');
-    const lastTip = linkedTips.slice(-1);
+    if (tips.length === 1) {
+      this.view.root.innerHTML = `Например, ${linkedTips[0]}`;
+    } else if (tips.length > 1) {
+      const firstTwoTips = linkedTips.slice(0, -1).join(', ');
+      const lastTip = linkedTips.slice(-1);
 
-    this.view.root.innerHTML = `Например, ${firstTips} или ${lastTip}`;
+      this.view.root.innerHTML = `Например, ${firstTwoTips} или ${lastTip}`;
+    }
   }
 }
