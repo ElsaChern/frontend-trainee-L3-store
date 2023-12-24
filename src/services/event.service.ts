@@ -16,7 +16,7 @@ class EventService {
     }
   }
   // 1.	Переход по страницам
-  public sendRouteEvent(url: string) {
+  sendRouteEvent(url: string) {
     this._sendEvent('route', url);
   }
   // 2.	Просмотр товара в списке товаров
@@ -35,12 +35,12 @@ class EventService {
   }
 
   // 3.	Добавление товара в корзину
-  public sendAddToCartEvent(product: ProductData) {
+  sendAddToCartEvent(product: ProductData) {
     this._sendEvent('addToCart', product);
   }
 
   // 4.	Оформление заказа
-  public sendPurchaseEvent(orderId: string, totalPrice: number, productIds: number[]) {
+  sendPurchaseEvent(orderId: string, totalPrice: number, productIds: number[]) {
     this._sendEvent('purchase', { orderId, totalPrice, productIds });
   }
 }
